@@ -20,7 +20,7 @@ export const DateComponent = ({
           type="date"
           id="date"
           value={onDateChange[0]}
-          max={new Date().toJSON()}
+          max={new Date().toJSON().split("T")[0]}
           onChange={(e) => handleDateChange(e)}
           className="p-2 rounded-lg border drop-shadow-md text-primary"
         />
