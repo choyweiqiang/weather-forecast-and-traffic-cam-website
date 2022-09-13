@@ -6,7 +6,7 @@ export const LocationComponent = ({
   onLocationChange: any;
 }) => {
   return (
-    <div className="p-2 rounded-lg border drop-shadow-md text-primary h-48 overflow-hidden overflow-y-auto w-96">
+    <div className="p-2 rounded-lg border drop-shadow-md text-primary overflow-hidden overflow-y-auto h-32 w-[18.5rem] md:h-48 md:w-96">
       <ul>
         {locations?.area_metadata?.map((d: any) => (
           <li

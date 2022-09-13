@@ -68,7 +68,7 @@ export const Home = () => {
 
   return (
     <div className="page h-full">
-      <div className="flex flex-col mt-8 gap-y-8">
+      <div className="flex flex-col mt-8 gap-y-4 md:gap-y-8">
         <div className={flexCenter}>
           <DateComponent
             onDateChange={[dateChange, setDateChange]}
@@ -77,7 +77,7 @@ export const Home = () => {
         </div>
 
         <div className={flexCenter}>
-          <div className="flex flex-row gap-x-4">
+          <div className="flex flex-col items-center md:flex-row gap-4">
             <LocationComponent
               locations={locations}
               onLocationChange={[locationChange, setLocationChange]}

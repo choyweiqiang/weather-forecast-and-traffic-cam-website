@@ -27,7 +27,7 @@ export const TrafficComponent = ({
 
   return (
     cameraFound && (
-      <div className="flex items-center justify-center rounded-lg border drop-shadow-md text-primary h-72 w-[32rem] overflow-hidden">
+      <div className="flex items-center justify-center rounded-lg border drop-shadow-md text-primary w-[18.5rem] md:h-72 md:w-[32rem] overflow-hidden">
         <img
           src={cameraFound?.image}
           alt={selectedLocation}
