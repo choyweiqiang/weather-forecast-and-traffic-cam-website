@@ -3,6 +3,7 @@ import axios from "axios";
 import { DateComponent } from "../../components/DateComponent";
 import { LocationComponent } from "../../components/LocationComponent";
 import { WeatherComponent } from "../../components/WeatherComponent";
+import { TrafficComponent } from "../../components/TrafficComponent";
 
 interface AreaMetaData {
   name: string;
@@ -41,6 +42,7 @@ export const Home = () => {
   const [locationChange, setLocationChange] = useState("");
 
   const [locations, setLocations] = useState({});
+  const [trafficCamera, setTrafficCamera] = useState({});
 
   useEffect(() => {
     let loc = timeChange.split(":");
@@ -52,19 +54,29 @@ export const Home = () => {
       .then((response) => {
         setLocations(response.data);
       });
+
+    axios
+      .get(
+        `https://api.data.gov.sg/v1/transport/traffic-images?date_time=${dateChange}T${loc[0]}%3A${loc[1]}%3A${loc[2]}`
+      )
+      .then((response) => {
+        setTrafficCamera(response.data);
+      });
   }, [dateChange, timeChange]);
+
+  const flexCenter = "flex justify-center";
 
   return (
     <div className="page h-full">
       <div className="flex flex-col mt-8 gap-y-8">
-        <div className="flex justify-center">
+        <div className={flexCenter}>
           <DateComponent
             onDateChange={[dateChange, setDateChange]}
             onTimeChange={[timeChange, setTimeChange]}
           />
         </div>
 
-        <div className="flex justify-center">
+        <div className={flexCenter}>
           <div className="flex flex-row gap-x-4">
             <LocationComponent
               locations={locations}
@@ -75,6 +87,14 @@ export const Home = () => {
               locations={locations}
             />
           </div>
+        </div>
+
+        <div className={flexCenter}>
+          <TrafficComponent
+            selectedLocation={locationChange}
+            locations={locations}
+            trafficCamera={trafficCamera}
+          />
         </div>
       </div>
     </div>
