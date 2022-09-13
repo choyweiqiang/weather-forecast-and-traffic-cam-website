@@ -36,9 +36,11 @@ interface Locations {
 
 export const Home = () => {
   const [dateChange, setDateChange] = useState(
-    new Date().toLocaleDateString("en-ca")
+    new Date().toJSON().split("T")[0]
   );
-  const [timeChange, setTimeChange] = useState(new Date().toLocaleTimeString());
+  const [timeChange, setTimeChange] = useState(
+    new Date().toJSON().split("T")[1].split(".")[0]
+  );
   const [locationChange, setLocationChange] = useState("");
 
   const [locations, setLocations] = useState({});
