@@ -41,7 +41,7 @@ export const WeatherComponent = ({
 
   return (
     <div className="drop-shadow-md">
-      <div className="flex items-center justify-center p-2 rounded-lg border drop-shadow-md text-primary h-48 w-48">
+      <div className="flex items-center justify-center p-2 rounded-lg border drop-shadow-md text-primary h-32 w-[18.5rem] md:h-48 md:w-48">
         <div className="flex flex-col">
           <div className={textSpan}>
             <img
