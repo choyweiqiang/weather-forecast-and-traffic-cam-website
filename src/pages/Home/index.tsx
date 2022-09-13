@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { DateComponent } from "../../components/DateComponent";
 import { LocationComponent } from "../../components/LocationComponent";
+import { WeatherComponent } from "../../components/WeatherComponent";
 
 interface AreaMetaData {
   name: string;
@@ -53,20 +54,29 @@ export const Home = () => {
       });
   }, [dateChange, timeChange]);
 
-  console.log(locationChange);
-
   return (
     <div className="page h-full">
-      <div className="flex justify-center mt-8">
-        <DateComponent
-          onDateChange={[dateChange, setDateChange]}
-          onTimeChange={[timeChange, setTimeChange]}
-        />
+      <div className="flex flex-col mt-8 gap-y-8">
+        <div className="flex justify-center">
+          <DateComponent
+            onDateChange={[dateChange, setDateChange]}
+            onTimeChange={[timeChange, setTimeChange]}
+          />
+        </div>
+
+        <div className="flex justify-center">
+          <div className="flex flex-row gap-x-4">
+            <LocationComponent
+              locations={locations}
+              onLocationChange={[locationChange, setLocationChange]}
+            />
+            <WeatherComponent
+              selectedLocation={locationChange}
+              locations={locations}
+            />
+          </div>
+        </div>
       </div>
-      <LocationComponent
-        locations={locations}
-        onLocationChange={[locationChange, setLocationChange]}
-      />
     </div>
   );
 };
